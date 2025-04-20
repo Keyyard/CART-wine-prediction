@@ -8,6 +8,7 @@ from src.model_trainer import ModelTrainer
 from src.evaluator import Evaluator
 from src.comparison_table import ComparisonTable
 from src.predictor import Predictor
+from src.user_input_predictor import UserInputPredictor
 
 import config
 
@@ -51,7 +52,13 @@ def run():
     # evaluate model performance 
     st.header("Model Evaluation")
     Evaluator.evaluate_model(y_test, y_pred)
-    
+
+    # user input for prediction
+    st.header("Predict Wine Quality")
+    st.subheader("Input Wine Features")
+    user_input_df = UserInputPredictor.get_user_input(X.columns)
+    UserInputPredictor.predict_quality(model, user_input_df)
+
     # footer
     st.markdown(""" 
     --- 
