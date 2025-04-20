@@ -23,7 +23,8 @@ def run():
     st.write(data.describe())
 
     # visualize
-    Visualizer.visualize_data(data)
+    visualizer = Visualizer()
+    visualizer.visualize_data(data)
 
     # split data to sets (80% train, 20% test)
     X = data.drop('quality', axis=1)
