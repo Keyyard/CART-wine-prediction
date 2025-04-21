@@ -12,6 +12,7 @@
 4. Predict: Predict wine quality using the trained model.
 5. Compare Result: Check predictions against actual values and display a detailed comparison table.
 6. Evaluate: Display accuracy and other evaluation metrics to assess model performance.
+7. User prediction: Allow users to input their own data and predict wine quality using the trained model.
 
 # TechSack:
 Language: Python
