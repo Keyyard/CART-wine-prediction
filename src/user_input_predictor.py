@@ -15,4 +15,5 @@ class UserInputPredictor:
         if st.button("Predict Quality"):
             prediction = model.predict(user_input_df)
             label = "Good" if prediction[0] >= 5 else "Bad"
+            st.table(user_input_df)
             st.write(f"Predicted Wine Quality: {prediction[0]} (Label: {label})")
