@@ -29,12 +29,7 @@ class ComparisonTable:
             lambda x: 'background-color: #5994bc' if x == 'Exact Match' else 'background-color: lightgreen' if x == 'Match' else 'background-color: lightcoral', subset=['Match']
         ).set_table_styles(
             [{'selector': 'th', 'props': [('font-size', '110%'), ('text-align', 'center')]}]
-        ))
-        
-
-        csv = comparison_df.to_csv(index=False)
-        st.download_button("Download Comparison Table", csv, "comparison_table.csv", "text/csv")
-        
+        ))        
 
         exact_matches_count = comparison_df['Match'].value_counts().get("Exact Match", 0)
         st.write(f"Number of Exact Matches: {exact_matches_count}/{len(comparison_df)}")
