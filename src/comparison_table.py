@@ -5,13 +5,20 @@ class ComparisonTable:
     @staticmethod
     def create_comparison_table(y_test, y_pred):
         y_test = y_test.reset_index(drop=True)
+        y_pred_series = pd.Series(y_pred).reset_index(drop=True)
+
         comparison_df = pd.DataFrame({
             'Wine ID': range(1, len(y_test) + 1),
             'Actual Quality': y_test.values,
             'Actual Label': y_test.apply(lambda x: "Good" if x >= 5 else "Bad"),
-            'Predicted Quality': y_pred,
-            'Predicted Label': pd.Series(y_pred).apply(lambda x: "Good" if x >= 5 else "Bad"),
-            'Match': y_test.apply(lambda x: "Exact Match" if (x==y_pred[y_test.index.get_loc(x)]) else "Match" if ("Good" if x >= 5 else "Bad") == ("Good" if y_pred[y_test.index.get_loc(x)] >= 5 else "Bad") else "Mismatch")
+            'Predicted Quality': y_pred_series.values,
+            'Predicted Label': y_pred_series.apply(lambda x: "Good" if x >= 5 else "Bad"),
+            'Match': [
+                "Exact Match" if actual == predicted else
+                "Match" if ("Good" if actual >= 5 else "Bad") == ("Good" if predicted >= 5 else "Bad") else
+                "Mismatch"
+                for actual, predicted in zip(y_test, y_pred_series)
+            ]
         })
         return comparison_df
 
