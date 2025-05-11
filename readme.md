@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/keyyard/cart-wine-prediction/badge)](https://www.codefactor.io/repository/github/keyyard/cart-wine-prediction)
+
 Đề tài 8: Nghiên cứu và cài đặt chương trình phần mềm sử dụng kỹ thuật cây quyết định **CART** để dự đoán chất lượng (quality) của các loại rượu theo các biến còn lại. Từ kết quả phân lớp và dữ liệu trong tập test, hãy đánh giá hiệu quả của mô hình dự đoán.
 
 # How CART Algorithm Works
